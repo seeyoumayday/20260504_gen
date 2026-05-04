@@ -79,6 +79,16 @@ copyBtn.addEventListener('click', async () => {
   }, 1800);
 });
 
+/* ---------- 文字サイズ変更 ---------- */
+const sizeSlider = document.getElementById('size-slider');
+
+// 初期サイズを反映
+output.style.fontSize = `${sizeSlider.value}px`;
+
+sizeSlider.addEventListener('input', (e) => {
+  output.style.fontSize = `${e.target.value}px`;
+});
+
 /* ---------- 初回表示 ---------- */
 render();
 

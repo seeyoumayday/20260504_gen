@@ -221,6 +221,52 @@ body {
 }
 
 /* ===========================
+   設定UI（スライダー等）
+   =========================== */
+.settings-row {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.settings-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.size-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(244, 162, 97, 0.4);
+  transition: transform var(--transition);
+}
+
+.size-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* ===========================
    歌詞出力エリア
    =========================== */
 .lyrics-wrapper {
