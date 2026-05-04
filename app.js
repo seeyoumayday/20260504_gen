@@ -83,11 +83,13 @@ copyBtn.addEventListener('click', async () => {
 const sizeSlider = document.getElementById('size-slider');
 
 // 初期サイズを反映
-output.style.fontSize = `${sizeSlider.value}px`;
+function updateFontSize() {
+  output.style.fontSize = `${sizeSlider.value}px`;
+}
+updateFontSize();
 
-sizeSlider.addEventListener('input', (e) => {
-  output.style.fontSize = `${e.target.value}px`;
-});
+sizeSlider.addEventListener('input', updateFontSize);
+sizeSlider.addEventListener('change', updateFontSize);
 
 /* ---------- 初回表示 ---------- */
 render();

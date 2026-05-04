@@ -248,6 +248,7 @@ body {
   border-radius: 2px;
   outline: none;
   cursor: pointer;
+  touch-action: none;
 }
 
 .size-slider::-webkit-slider-thumb {
