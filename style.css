@@ -1,0 +1,340 @@
+/* ===========================
+   デザイントークン & リセット
+   =========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep:      #090b14;
+  --bg-card:      rgba(255, 255, 255, 0.045);
+  --border:       rgba(255, 255, 255, 0.10);
+  --border-focus: rgba(255, 180, 120, 0.55);
+  --accent-warm:  #f4a261;
+  --accent-pink:  #e76f9e;
+  --accent-light: #f8edcc;
+  --text-primary: rgba(255, 255, 255, 0.92);
+  --text-muted:   rgba(255, 255, 255, 0.42);
+  --text-hint:    rgba(255, 255, 255, 0.30);
+  --shadow-card:  0 8px 48px rgba(0, 0, 0, 0.55);
+  --radius-lg:    20px;
+  --radius-md:    12px;
+  --radius-sm:    8px;
+  --transition:   0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 60px 20px 80px;
+  position: relative;
+}
+
+/* ===========================
+   背景キャンバス
+   =========================== */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===========================
+   コンテナ
+   =========================== */
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 660px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ===========================
+   ヘッダー
+   =========================== */
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.header-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  border: 1px solid rgba(244, 162, 97, 0.40);
+  border-radius: 100px;
+  padding: 4px 14px;
+  background: rgba(244, 162, 97, 0.08);
+}
+
+.header-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(2rem, 7vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #f8edcc 0%, #f4a261 50%, #e76f9e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.header-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+}
+
+/* ===========================
+   カード共通
+   =========================== */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition);
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* ===========================
+   入力カード
+   =========================== */
+.input-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin-bottom: 14px;
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+}
+
+.text-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  letter-spacing: 0.06em;
+}
+
+.text-input::placeholder {
+  color: var(--text-hint);
+}
+
+.text-input:focus {
+  border-color: var(--border-focus);
+  background: rgba(244, 162, 97, 0.06);
+  box-shadow: 0 0 0 3px rgba(244, 162, 97, 0.12);
+}
+
+.generate-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f4a261, #e76f9e);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 14px 22px;
+  white-space: nowrap;
+  transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  box-shadow: 0 4px 18px rgba(231, 111, 158, 0.35);
+}
+
+.generate-btn:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 24px rgba(231, 111, 158, 0.50);
+  transform: translateY(-1px);
+}
+
+.generate-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-icon {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform var(--transition);
+}
+
+.generate-btn:hover .btn-icon {
+  transform: translateX(3px);
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--text-hint);
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+/* ===========================
+   歌詞出力エリア
+   =========================== */
+.lyrics-wrapper {
+  position: relative;
+  min-height: 200px;
+  padding: 36px 36px 36px 44px;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: opacity var(--transition);
+}
+
+/* 左のアクセントライン */
+.lyrics-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 24px;
+  bottom: 24px;
+  width: 3px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, #f4a261, #e76f9e);
+}
+
+.lyrics-decoration {
+  position: absolute;
+  top: 18px;
+  right: 26px;
+  font-size: 56px;
+  color: rgba(255, 255, 255, 0.04);
+  font-family: serif;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+.lyrics-text {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 300;
+  letter-spacing: 0.10em;
+  line-height: 1.9;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.lyrics-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* コピーボタン */
+.copy-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  padding: 6px 14px;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.copy-btn:hover {
+  background: rgba(244, 162, 97, 0.12);
+  border-color: rgba(244, 162, 97, 0.30);
+  color: var(--accent-warm);
+}
+
+.copy-btn.copied {
+  background: rgba(100, 220, 160, 0.12);
+  border-color: rgba(100, 220, 160, 0.30);
+  color: #64dca0;
+}
+
+/* ===========================
+   アニメーション
+   =========================== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container > * {
+  animation: fadeInUp 0.7s ease both;
+}
+.container > *:nth-child(1) { animation-delay: 0.0s; }
+.container > *:nth-child(2) { animation-delay: 0.12s; }
+.container > *:nth-child(3) { animation-delay: 0.22s; }
+
+/* ===========================
+   レスポンシブ
+   =========================== */
+@media (max-width: 480px) {
+  body { padding: 36px 14px 60px; }
+  .input-row { flex-direction: column; }
+  .generate-btn { justify-content: center; }
+  .card { padding: 22px 20px; }
+  .lyrics-wrapper { padding: 28px 22px 44px 32px; }
+}

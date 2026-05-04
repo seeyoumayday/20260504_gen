@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AのBの中で ジェネレーター</title>
+  <meta name="description" content="「朝の光の中で」風の歌詞をワンクリックで生成。キーワードを入力するだけで幻想的なフレーズが完成します。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 背景パーティクル -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="container">
+    <!-- ヘッダー -->
+    <header class="header">
+      <div class="header-badge">Generator</div>
+      <h1 class="header-title">AのBの中で</h1>
+      <p class="header-sub">詩的なフレーズジェネレーター</p>
+    </header>
+
+    <!-- 入力カード -->
+    <div class="card input-card" id="input-card">
+      <div class="input-row">
+        <input
+          type="text"
+          id="keyword-input"
+          class="text-input"
+          placeholder="例：朝の光 / 夜の海"
+          value="朝の光"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button class="generate-btn" id="generate-btn" aria-label="歌詞を生成する">
+          <span class="btn-text">生成</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 歌詞出力エリア -->
+    <div class="lyrics-wrapper" id="lyrics-wrapper">
+      <div class="lyrics-decoration" aria-hidden="true">♩</div>
+      <pre class="lyrics-text" id="lyrics-output"></pre>
+      <button class="copy-btn" id="copy-btn" title="コピー">
+        <span id="copy-icon">⧉</span> コピー
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
