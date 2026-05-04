@@ -84,7 +84,7 @@ const sizeSlider = document.getElementById('size-slider');
 
 // 初期サイズを反映
 function updateFontSize() {
-  output.style.fontSize = `${sizeSlider.value}px`;
+  document.documentElement.style.setProperty('--lyric-size', `${sizeSlider.value}px`);
 }
 updateFontSize();
 
